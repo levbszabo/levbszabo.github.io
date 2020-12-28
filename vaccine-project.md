@@ -7,9 +7,11 @@ Joint Work: Dr. Annasse Bari, Ryan Cohen
 ### 1. System Architecture 
 To gauge public sentiment regarding vaccination in real time our social media analytics pipeline shown below consists of a variety of platforms and primarily utilizes the Amazon Web Services (AWS) cloud infrastructure. In order to generate valuable insights from newly published Tweets our system takes data through 3 phases; an Ingestion, Analysis and Visualization phase. In addition to these aspects of our pipeline we also performed a data modelling phase by selecting key features, designing a database schema and bringing in external data sources. 
 
-<img src="images/AWS-Architecture-portfolio?raw=true"/>
+<img src="images/AWS-Architecture-portfolio.png?raw=true"/>
 
-### 2. Assess assumptions on which statistical inference will be based
+### 2. Data Ingestion
+
+To collect real time tweets a Java application is used to interface with the Twitter Streaming API. We use Twitter4j to interface with Twitter and JDBC to interface with our MySQL relational database. To perform continuous tweet ingestion our application is run on an AWS Linux EC2 instance. In addition to tweets containing the word "vaccine" we also collect additional 
 
 ```javascript
 if (isAwesome){
