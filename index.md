@@ -5,7 +5,7 @@
 ### Data Science
 
 [Analysis of COVID Vaccine Sentiment Using Twitter](/sample_page)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
+<img src="images/AWS-Architecture-portfolio.png?raw=true"/>
 
 ---
 [Project 2 Title](/pdf/sample_presentation.pdf)
