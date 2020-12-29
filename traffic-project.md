@@ -1,31 +1,22 @@
-## This can be your internal website page / project page
+## Forecasting Street Speed using Alternative Data
 
-**Project description:** Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Joint Work: Lingbo Ji, Yaowei Zong
 
-### 1. Suggest hypotheses about the causes of observed phenomena
+[Paper](/pdf/TrafficPaper.pdf)
+<br>
+[Powerpoint](/pdf/TrafficSlides.pdf)
+<br>
+[Code](https://github.com/ls5122/TrafficForecasting)
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+**Overview** Forecasting of street speed is a pivotal component of many traffic analysis and route prediction algorithms. Street speed over a geographic region is highly non-linear being effected by both seasonal and environmental factors. To test our hypothesis of using alternative data sources to supplement forecasting street speed we train a baseline model against one with additional weather data and traffic collision counts. We train and evaluate our model over several New York City streets. Our results indicate significant improvement over the baseline particularly due to the pandemic lockdown in early 2020. 
 
-```javascript
-if (isAwesome){
-  return true
-}
-```
+### 1. System Design
 
-### 2. Assess assumptions on which statistical inference will be based
+To test the effectiveness of our approach we predict street speeds with additional weather data and motor vehicle collision counts by utilizing Fbprophet <sup>[1](#prophet)</sup>, a lightweight time series forecasting toolkit. Our models are trained on New York City street speed data from 2019 and are used to forecast speeds for 2020. Our system architecture is displayed below. Initially the raw data is taken from three different sources. Hourly street speed data <sup>[2](#uber)</sup> , weather data <sup>[3](#weather)</sup>, and motor vehicle crashes <sup>[3](#crashes)</sup>. After the data sources are placed into HDFS we apply data cleaning and pre-processing using MapReduce to construct curated data sets that are ready for analysis. Then using Spark we construct DataFrames over the data sources and apply additional steps to fit the structure for forecasting. Finally using our time series forecasting tool, Fbprophet in conjunction with Pyspark we construct forecasts over our testing period for a fixed number of streets. These can then be stored in HDFS or otherwise the average RMSE is calculated against the true street speed values. 
 
-```javascript
-if (isAwesome){
-  return true
-}
-```
 
-### 3. Support the selection of appropriate statistical tools and techniques
+<img src="images/TrafficSchema.png?raw=true"/>
 
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
 
-### 4. Provide a basis for further data collection through surveys or experiments
+<a name="prophet">[1]</a>: J. Taylor and B. Letham,    “Forecasting at scale, ”Peer J Preprints, vol. 5, p.e3190v2, Sep. 2017. [Online]. Available: https://doi.org/10.7287/peerj.preprints.3190v
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
