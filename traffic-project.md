@@ -18,5 +18,14 @@ To test the effectiveness of our approach we predict street speeds with addition
 <img src="images/TrafficSchema.png?raw=true"/>
 
 
-<a name="prophet">[1]</a>: J. Taylor and B. Letham,    “Forecasting at scale, ”Peer J Preprints, vol. 5, p.e3190v2, Sep. 2017. [Online]. Available: https://doi.org/10.7287/peerj.preprints.3190v
+<a name="prophet">[1]</a>: J. Taylor and B. Letham,    “Forecasting at scale, ”Peer J Preprints, vol. 5, p.e3190v2, Sep. 2017. [Online]. Available: https://doi.org/10.7287/peerj.preprints.3190v2
+
+<a name="uber">[2]</a>: Uber historical speeds, hourly time series, ”Uber Movement, Dec.2020. [Online]. Available: https://movement.uber.com/cities/newyork/downloads/speed
+
+<a name="weather>[3]</a>: “NYC local climatological data” National Center for Environmental Information, Dec. 2020. [Online]. Available: https://www.ncdc.noaa.gov/cdo-web/datasets/LCD/stations/WBAN:94728/detail
+
+
+
+         
+
 
