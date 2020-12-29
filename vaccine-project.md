@@ -2,6 +2,9 @@
 
 Joint Work: Dr. Annasse Bari, Ryan Cohen
 
+[Paper](/pdf/SentimentPaper.pdf)
+[Powerpoint](/pdf/SentimentSlides.pdf)
+
 **Overview** The development of a vaccine that could end the global COVID-19 pandemic would require a large-scale program to vaccinate a majority of the population. With multiple vaccines in rapid development, we anticipate a variety of barriers regarding widespread vaccination. In order to gauge public perception regarding vaccination we construct a sentiment analysis system that analyzes Twitter data in real time. To facilitate healthcare professionals in overcoming vaccine hesitancy ours system gives insight into the reasoning behind specific attitudes as well as highlighting spatiotemporal differences
 
 ### 1. System Architecture 
