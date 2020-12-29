@@ -28,5 +28,3 @@ Analytics regarding the breakdown of tweet sentiments, most common keywords and 
 <img src="images/qs_2.JPG?raw=true"/>
 
 <img src="images/qs_3.JPG?raw=true"/>
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
