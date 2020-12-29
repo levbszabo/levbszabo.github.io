@@ -19,8 +19,10 @@ On regular time intervals an AWS CloudWatch service initiates a serverless Lambd
 
 ### 4. Data Visualization
 
-Analytics regarding the breakdown of tweet sentiments, most common keywords and user locations is displayed as a dashboard using AWS QuickSight. Data is constantly refreshed to provide a real-time user experience. 
+Analytics regarding the breakdown of tweet sentiments, most common keywords and user locations is displayed as a dashboard using AWS QuickSight. Data is constantly refreshed to provide a real-time user experience. Below we have the sentiment breakdown across a variety of categories (Ex. Fear, Safety, Conspiracy). These results indicate the overall sentiment of specific topics in the Twitter space, we wish to use these as a stepping stone for future topic modelling approaches. Next we have the daily sentiment breakdown over the last 4 weeks, indicating any fluctuations in vaccine hesitancy. 
 
 <img src="images/qs_2.JPG?raw=true"/>
+
+<img src="images/qs_3.JPG?raw=true"/>
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
