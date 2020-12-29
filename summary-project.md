@@ -54,7 +54,7 @@ Next using the attention distribution the context vector is constructed as a dot
 
 To test the efficacy of the DANCER framework we compared a baseline Pointer Generator model against one which used the ROUGE-LCS and one which used the BLEU scores to split summaries. We trained on 8000 articles and tested on 1000 articles. The results indicate the ROUGE-LCS as being superior on a variety of metrics when compared to both the BLEU and Baseline model.
 
-<img src="images/summary_comparison2.JPG?raw=true"/>
+<img src="images/summary_comparison2.jpg?raw=true"/>
 
 
 Finally we show an example of a target abstract with both the ROUGE and BLEU summaries. One can see evidence of both source and vocab distributions.
