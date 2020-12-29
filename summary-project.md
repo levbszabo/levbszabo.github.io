@@ -42,4 +42,7 @@ The Pointer Generator is a sequence to sequence neural model that provides abstr
 
 The input source text is embedded and fed into a bidirectional LSTM, the red network in the diagram. This network serves as the encoder and produces a set of hidden states. Decoding takes place one token at a time. For each timestep the decoder gives rise to decoder states which during training correspond to the word embedding of the previous word. Together these combine to create the attention distribution.
 
-Next using the attention distribution the context vector is constructed as a dot product between the attention distribution and the hidden states. The attention distribution guides the decoder towards the next word while the context vector serves to produce the distribution over all words in the vocabulary P(x) as well as the pointer generator probability W which gives us the option to copy words from the source text according to  S(x), the source distribution. Output tokens are produced according to ``F(x) = W*P(x) + (1-W)*S(x)`` 
+Next using the attention distribution the context vector is constructed as a dot product between the attention distribution and the hidden states. The attention distribution guides the decoder towards the next word while the context vector serves to produce the distribution over all words in the vocabulary P(x) as well as the pointer generator probability W which gives us the option to copy words from the source text according to  S(x), the source distribution. Output tokens are produced according to
+
+``F(x) = W*P(x) + (1-W)*S(x)`` 
+
