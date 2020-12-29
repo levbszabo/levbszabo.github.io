@@ -11,20 +11,16 @@ To gauge public sentiment regarding vaccination in real time our social media an
 
 ### 2. Data Ingestion
 
-To collect real time tweets a Java application is used to interface with the Twitter Streaming API. We use Twitter4j to interface with Twitter and JDBC to interface with our MySQL relational database. To perform continuous tweet ingestion our application is run on an AWS Linux EC2 instance. In addition to tweets containing the word "vaccine" we also collect additional 
+To collect real time tweets a Java application is used to interface with the Twitter Streaming API. We use Twitter4j to interface with Twitter and JDBC to interface with our MySQL relational database. To perform continuous tweet ingestion our application is run on an AWS Linux EC2 instance. In addition to tweets containing the word "vaccine" we also collect additional tweets that match a set of curated keywords. Finally tweets are stored in a MySQL relational database. 
 
-```javascript
-if (isAwesome){
-  return true
-}
-```
+### 3. Data Analysis
 
-### 3. Support the selection of appropriate statistical tools and techniques
+On regular time intervals an AWS CloudWatch service initiates a serverless Lambda function to read unprocessed tweets from the MySQL database. Sentiment analysis and Keyword extraction are performed with AWS Comprehend and location matching using the Python geotext package. 
 
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
+### 4. Data Visualization
 
-### 4. Provide a basis for further data collection through surveys or experiments
+Analytics regarding the breakdown of tweet sentiments, most common keywords and user locations is displayed as a dashboard using AWS QuickSight. Data is constantly refreshed to provide a real-time user experience. 
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+<img src="images/quicksight_2_portfolio.JPG?raw=true"/>
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
