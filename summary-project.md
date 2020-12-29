@@ -19,7 +19,12 @@ The Divide-ANd-ConquER (DANCER) framework exploits the discourse structure of lo
 Academic articles are an ideal candidate for long document summarization because the paper abstract can serve as a label or a candidate summary for the paper. Additionally many papers follow a general structure with Introduction, Methods, Results and Conclusion being common sections in most articles. We can improve the summarization output and reduce computational costs by taking advantage of this common structure. 
 
 
-<img src="images/AWS-Architecture-portfolio.png?raw=true"/>
+<img src="images/dancer_training.JPG?raw=true"/>
+
+<br>
+
+<img src="images/dancer_testing.JPG?raw=true"/>
+
 
 ### 2. Problem Statement
 
