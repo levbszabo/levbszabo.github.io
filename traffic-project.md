@@ -12,7 +12,7 @@ Joint Work: Lingbo Ji, Yaowei Zong
 
 ### 1. System Design
 
-To test the effectiveness of our approach we predict street speeds with additional weather data and motor vehicle collision counts by utilizing Fbprophet <sup>[1](#prophet)</sup>, a lightweight time series forecasting toolkit. Our models are trained on New York City street speed data from 2019 and are used to forecast speeds for 2020. Our system architecture is displayed below. Initially the raw data is taken from three different sources. Hourly street speed data <sup>[2](#uber)</sup> , weather data <sup>[3](#weather)</sup>, and motor vehicle crashes <sup>[3](#crashes)</sup>. After the data sources are placed into HDFS we apply data cleaning and pre-processing using MapReduce to construct curated data sets that are ready for analysis. Then using Spark we construct DataFrames over the data sources and apply additional steps to fit the structure for forecasting. Finally using our time series forecasting tool, Fbprophet in conjunction with Pyspark we construct forecasts over our testing period for a fixed number of streets. These can then be stored in HDFS or otherwise the average RMSE is calculated against the true street speed values. 
+To test the effectiveness of our approach we predict street speeds with additional weather data and motor vehicle collision counts by utilizing Fbprophet <sup>[1](#prophet)</sup>, a lightweight time series forecasting toolkit. Our models are trained on New York City street speed data from 2019 and are used to forecast speeds for 2020. Our system architecture is displayed below. Initially the raw data is taken from three different sources. Hourly street speed data <sup>[2](#uber)</sup> , weather data <sup>[3](#weather)</sup>, and motor vehicle crashes <sup>[4](#crashes)</sup>. After the data sources are placed into HDFS we apply data cleaning and pre-processing using MapReduce to construct curated data sets that are ready for analysis. Then using Spark we construct DataFrames over the data sources and apply additional steps to fit the structure for forecasting. Finally using our time series forecasting tool, Fbprophet in conjunction with Pyspark we construct forecasts over our testing period for a fixed number of streets. These can then be stored in HDFS or otherwise the average RMSE is calculated against the true street speed values. 
 
 
 <img src="images/TrafficSchema.png?raw=true"/>
@@ -31,14 +31,14 @@ Fbprophet is an out of the box time series forecasting model in the sense that i
 
 **Model 1** Our baseline model utilizes only trend and seasonality with no added weather features or traffic collision counts. We construct a Fbprophet model trained on daily speed data from 1/1/2019 to 12/31/2019 and forecast street speeds over 1/1/2020 to 3/31/2020. The error for a single street is the Root Mean Squared Error (RMSE) and the error over the dataset is the average RMSE.
 
-**Model 2**  Our second model utilizes both trend and seasonality but also incorporates the weather features rain, snow, freezing, visibility, crashes. These additional features are added as regressors and street speed is forecast along an identical time horizon as Model 1. We utilize the average RMSE to evaluate the efficacy of using the additional features. 
+**Model 2**  Our second model utilizes both trend and seasonality but also incorporates the additional features rain, snow, freezing, visibility, crashes. These features are added as regressors and street speed is forecast along an identical time horizon as Model 1. We utilize the average RMSE to evaluate the efficacy of using the additional features. 
 
 
 ### 3. Results
 
 <img src="images/HyperparameterErrors.JPG?raw=true"/>
 
-First we tuned our hyperparameters on a validation set of 15 seperate street speed time series. Our results indicated that using a linear trend with multiplicative seasonality and multiplicative added regressors would be optimal. Then utilizing Pyspark to interface between the raw data and Fbprophet we ran our baseline model against the one with added regressors on 295 different street speed time series. The average RMSE was **19.55** versus **16.55** when comparing the baseline model to our proposed solution. Traffic collisions served as a proxy for the covid lockdown which began in mid March 2020 while also providing a global indicator of traffic across NYC. The figures below display the baseline and updated model respectively. 
+First we tuned our hyperparameters on a validation set of 15 seperate street speed time series. Our results indicated that using a linear trend with multiplicative seasonality and multiplicative added regressors would be optimal. Then, utilizing Pyspark to interface between the raw data and Fbprophet we ran our baseline model against the one with added regressors on 295 different street speed time series. The average RMSE was **19.55** versus **16.55** when comparing the baseline model to our proposed solution. Traffic collisions served as a proxy for the COVID-19 lockdown which began in mid-March 2020 while also providing a global indicator of traffic across NYC. The figures below display the baseline and updated model respectively. 
 
 
 <img src="images/TrafficBaseline.JPG?raw=true"/>
@@ -58,8 +58,5 @@ Our hypothesis was correct in that utilizing external environmental features lik
 
 <a name="crashes">[4]</a>: Motor  vehicle  collisions - crashes,”  NYC  Open  Data,  Dec.  2020. [Online]. Available: https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Crashes/h9gi-nx95
 
-
-
-         
 
 
