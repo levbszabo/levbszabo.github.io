@@ -8,8 +8,8 @@
 <img src="images/AWS-Architecture-portfolio.png?raw=true"/>
 
 ---
-[Project 2 Title](/pdf/sample_presentation.pdf)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
+[Implementation and Evaluation of the DANCER Framework for Academic Article Summarization](/summary-project)
+<img src="images/dancer_testing.JPG?raw=true"/>
 
 ---
 [Project 3 Title](http://example.com/)
