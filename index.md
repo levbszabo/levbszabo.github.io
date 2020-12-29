@@ -2,7 +2,7 @@
 
 ---
 
-### Data Science
+### Natural Language Processing
 
 [Analysis of COVID Vaccine Sentiment Using Twitter](/vaccine-project)
 <img src="images/AWS-Architecture-portfolio.png?raw=true"/>
@@ -12,14 +12,17 @@
 <img src="images/dancer_testing.JPG?raw=true"/>
 
 ---
-[Project 3 Title](http://example.com/)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
 
 ---
 
-### Category Name 2
+### Time Series Forecasting
 
-- [Project 1 Title](http://example.com/)
+- [Forecasting Street Speed using Alternative Data](/traffic-project)
+<img src="images/street_speed.png?raw=true"/>
+
+--- 
+
+
 - [Project 2 Title](http://example.com/)
 - [Project 3 Title](http://example.com/)
 - [Project 4 Title](http://example.com/)
