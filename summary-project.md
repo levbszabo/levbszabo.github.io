@@ -27,7 +27,7 @@ Academic articles are an ideal candidate for long document summarization because
 
 ### 2. Problem Statement
 
-Our goal is to evaluate and compare the performance of DANCER by using different scoring metrics for splitting the document summary into different sections. In particular, we use ROUGE-L [^2] and BLEU [^3] scores to generate the section-wise summaries from the main summary for training. We use the Pointer Generator, based on the sequence-to-sequence RNN paradigm, as the main summarization model. Finally, we compare the performance of the DANCER model with a baseline model, which also uses Pointer Generator, but does not split the main summary into section-wise summaries. We use a subset of a publicly available pre-processed ArXiv dataset for our experiments. The performance of different models is evaluated using ROUGE scores. 
+Our goal is to evaluate and compare the performance of DANCER by using different scoring metrics for splitting the document summary into different sections. In particular, we use ROUGE-L <sup>[2](#rouge)</sup> and BLEU <sup>[3](#bleu)</sup> scores to generate the section-wise summaries from the main summary for training. We use the Pointer Generator, based on the sequence-to-sequence RNN paradigm, as the main summarization model. Finally, we compare the performance of the DANCER model with a baseline model, which also uses Pointer Generator, but does not split the main summary into section-wise summaries. We use a subset of a publicly available pre-processed ArXiv dataset for our experiments. The performance of different models is evaluated using ROUGE scores. 
 
 A general outline of our approach is given below. 
 
@@ -38,7 +38,7 @@ A general outline of our approach is given below.
 
 ### 3. Pointer Generator Model
 
-The Pointer Generator [^4] is a sequence to sequence neural model that provides abstract text summarization. The model consists of an encoder and decoder phase. Through a combination of pointing at words in the source and generating words from the vocab distribution this model can be seen as a hybrid summarization model. The model uses a coverage mechanism to minimize the repetition of copied words. 
+The Pointer Generator <sup>[4](#pointer)</sup> is a sequence to sequence neural model that provides abstract text summarization. The model consists of an encoder and decoder phase. Through a combination of pointing at words in the source and generating words from the vocab distribution this model can be seen as a hybrid summarization model. The model uses a coverage mechanism to minimize the repetition of copied words. 
 
 The input source text is embedded and fed into a bidirectional LSTM, the red network in the diagram. This network serves as the encoder and produces a set of hidden states. Decoding takes place one token at a time. For each timestep the decoder gives rise to decoder states which during training correspond to the word embedding of the previous word. Together these combine to create the attention distribution.
 
@@ -50,12 +50,10 @@ Next using the attention distribution the context vector is constructed as a dot
 <img src="images/white_ptr_gen.png?raw=true"/>
 
 
-[^1]: Alexios Gidiotis and Grigorios Tsoumakas. 2020.   A divide-and-conquer approach to the summarization of long documents
-
 <a name="dancer">[1]</a>: Alexios Gidiotis and Grigorios Tsoumakas. 2020.   A divide-and-conquer approach to the summarization of long documents
 
-[^2]: Chin-Yew  Lin.  2004.   ROUGE:  A  package  for  automatic evaluation of summaries.  In Text Summariza-tion Branches Out, pages 74–81, Barcelona, Spain. Association for Computational Linguistics.
+<a name="rouge">[2]</a>: Chin-Yew  Lin.  2004.   ROUGE:  A  package  for  automatic evaluation of summaries.  In Text Summarization Branches Out, pages 74–81, Barcelona, Spain. Association for Computational Linguistics.
 
-[^3]: Kishore Papineni, Salim Roukos, Todd Ward, and Wei-Jing  Zhu.  2002. Bleu:  A  method  for  automatice valuation of machine translation.  ACL ’02,  page 311–318, USA. Association for Computational Linguistics
+<a name="bleu">[3]</a>: Kishore Papineni, Salim Roukos, Todd Ward, and Wei-Jing  Zhu.  2002. Bleu:  A  method  for  automatic evaluation of machine translation.  ACL ’02,  page 311–318, USA. Association for Computational Linguistics
 
-[^4]:  Abigail See, Peter J. Liu, and Christopher D. Manning. 2017. Get to the point: Summarization with pointer-generator networks.
+<a name="pointer">[4]</a>: Abigail See, Peter J. Liu, and Christopher D. Manning. 2017. Get to the point: Summarization with pointer-generator networks.
