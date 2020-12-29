@@ -17,7 +17,7 @@
 
 ### Time Series Forecasting
 
-- [Forecasting Street Speed using Alternative Data](/traffic-project)
+[Forecasting Street Speed using Alternative Data](/traffic-project)
 <img src="images/street_speed.png?raw=true"/>
 
 --- 
