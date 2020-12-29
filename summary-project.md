@@ -38,7 +38,7 @@ A general outline of our approach is given below.
 
 ### 3. Pointer Generator Model
 
-The Pointer Generator <sup>[4](#pointer)</sup> is a sequence to sequence neural model that provides abstract text summarization. The model consists of an encoder and decoder phase. Through a combination of pointing at words in the source and generating words from the vocab distribution this model can be seen as a hybrid summarization model. The model uses a coverage mechanism to minimize the repetition of copied words. 
+The Pointer Generator <sup>[4](#pointer)</sup> is a sequence to sequence neural model that provides abstract text summarization. The model consists of an encoder and decoder phase. Through a combination of pointing at words in the source text and generating words from the vocabulary distribution this model can be seen as a hybrid summarization model. The model uses a coverage mechanism to minimize the repetition of copied words. 
 
 The input source text is embedded and fed into a bidirectional LSTM, the red network in the diagram. This network serves as the encoder and produces a set of hidden states. Decoding takes place one token at a time. For each timestep the decoder gives rise to decoder states which during training correspond to the word embedding of the previous word. Together these combine to create the attention distribution.
 
@@ -49,6 +49,17 @@ Next using the attention distribution the context vector is constructed as a dot
 
 <img src="images/white_ptr_gen.png?raw=true"/>
 
+
+### 4. Results
+
+To test the efficacy of the DANCER framework we compared a baseline Pointer Generator model against one which used the ROUGE-LCS and one which used the BLEU scores to split summaries. We trained on 8000 articles and tested on 1000 articles. The results indicate the ROUGE-LCS as being superior on a variety of metrics when compared to both the BLEU and Baseline model.
+
+<img src="images/summary_comparison.JPG?raw=true"/>
+
+
+Finally we show an example of a target abstract with both the ROUGE and BLEU summaries. One can see evidence of both source and vocab distributions.
+
+<img src="images/summary_example.png?raw=true"/>
 
 <a name="dancer">[1]</a>: Alexios Gidiotis and Grigorios Tsoumakas. 2020.   A divide-and-conquer approach to the summarization of long documents
 
