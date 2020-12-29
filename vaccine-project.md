@@ -21,6 +21,6 @@ On regular time intervals an AWS CloudWatch service initiates a serverless Lambd
 
 Analytics regarding the breakdown of tweet sentiments, most common keywords and user locations is displayed as a dashboard using AWS QuickSight. Data is constantly refreshed to provide a real-time user experience. 
 
-<img src="images/quicksight_2_portfolio.JPG?raw=true"/>
+<img src="images/qs_2.JPG?raw=true"/>
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
