@@ -27,14 +27,14 @@ Our goal is to evaluate and compare the performance of DANCER by using different
 
 A general outline of our approach is given below. 
 
-``
+$$
 \begin{enumerate}
     \item Use the DANCER method to generate training datasets using the ROUGE-LCS score and the BLEU-Corpus score. Generate a baseline dataset which does not use this approach.
     \item Train Pointer Generator Seq2Seq summarizer separately on all these datasets. 
     \item While testing, use the trained weights of the Pointer Generator model to generate section-wise summaries and concatenate them to generate the final summary .
     \item Evaluate the different models according to different ROUGE scores.
 \end{enumerate}
-``
+$$
 
 
 ### 3. Data Analysis
