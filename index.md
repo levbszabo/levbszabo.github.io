@@ -8,7 +8,7 @@
 <img src="images/AWS-Architecture-portfolio.png?raw=true"/>
 
 ---
-[Implementation and Evaluation of the DANCER Framework for Academic Article Summarization](/summary-project)
+[Evaluation of the DANCER Framework for Article Summarization](/summary-project)
 <img src="images/dancer_testing.JPG?raw=true"/>
 
 ---
