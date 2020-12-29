@@ -22,7 +22,7 @@ To test the effectiveness of our approach we predict street speeds with addition
 
 <a name="uber">[2]</a>: Uber historical speeds, hourly time series, ”Uber Movement, Dec.2020. [Online]. Available: https://movement.uber.com/cities/newyork/downloads/speed
 
-<a name="weather>[3]</a>: “NYC local climatological data” National Center for Environmental Information, Dec. 2020. [Online]. Available: https://www.ncdc.noaa.gov/cdo-web/datasets/LCD/stations/WBAN:94728/detail
+<a name="weather">[3]</a>: “NYC local climatological data” National Center for Environmental Information, Dec. 2020. [Online]. Available: https://www.ncdc.noaa.gov/cdo-web/datasets/LCD/stations/WBAN:94728/detail
 
 
 
