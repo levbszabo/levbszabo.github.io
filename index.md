@@ -11,6 +11,9 @@
 [Evaluation of the DANCER Framework for Article Summarization](/summary-project)
 <img src="images/dancer_testing.JPG?raw=true"/>
 
+[Implementation of a Probabilistic CYK Parser](/parsing-project)
+<img src="images/ParsingExample.JPG?raw=true"/>
+
 ---
 
 ---
