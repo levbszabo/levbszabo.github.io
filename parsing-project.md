@@ -14,7 +14,7 @@ Parsing in NLP is the process of determining the syntactic structure of a text b
 
 ### 2. Probabilistic CYK Parsing
 
-The extended Cocke–Younger–Kasami (CYK) algorithm for given probabilistic context-free grammars (PCFGs) is an inference algorithm that utilizes dynamic programming to find the most likely parse tree of a given sentence according to production probabilities. The CYK algorithm has a worst case running time of ``O(n^3 * |G|)`` where G is the size of the grammar. The CYK algorithm requires our Context Free Grammar (CFG) G to be in Chomsky Normal Form meaning that all production rules either produce 1 or 2 nonterminals or exactly 1 terminal. A probablistic context free grammar (PCFG) consists of Σ : terminals, N : non-terminals, R: production rules, S: start symbol. The algorithm first fills in the most likely production rules for producing the terminals and then continues upwards in a bottom up fashion using dynamic programming.
+The extended Cocke–Younger–Kasami (CYK) algorithm for given probabilistic context-free grammars (PCFGs) is an inference algorithm that utilizes dynamic programming to find the most likely parse tree of a given sentence according to production probabilities. The CYK algorithm has a worst case running time of ``O(n^3 * |G|)`` where G is the size of the grammar. The CYK algorithm requires our Context Free Grammar (CFG) G to be in Chomsky Normal Form meaning that all production rules either produce 1 or 2 nonterminals or exactly 1 terminal. A probablistic context free grammar (PCFG) consists of Σ : terminals, N : non-terminals, R: production rules with probabilities, S: start symbol. The algorithm first fills in the most likely production rules for producing the terminals and then continues upwards in a bottom up fashion using dynamic programming.
  
  
 **Input:** A string x1...xn and PCFG = (Σ, N, R, S) 
@@ -24,7 +24,7 @@ initialize scores[i,j][A] = 0  for all 0<=i<j<=n , A in N
 initialize backpointer
 for i in [1,n] 
     for A in N where (prob, A -> xi) in R
-        scores[i-1][i][A] <- max(prob, scores[i-1][i][A]
+        scores[i-1][i][A] <- max(prob, scores[i-1][i][A])
         update backpointer
 
 for l in [2,n]
@@ -32,12 +32,12 @@ for l in [2,n]
         j = i+l
         for k in [i+1,j-1]
             for (prob, A -> BC) in R
-                scores[i][j][A] <- max(prob*scores[i][k][B] *  scores[k+1][j][C], scores[i][j][A]  
+                scores[i][j][A] <- max(prob*scores[i][k][B] *  scores[k+1][j][C], scores[i][j][A]) 
                 
 ~~~~
 
 
-The pseudocode above gives a rough sketch of the CKY algorithm, during our application we also had to add in the unary production rules such as A->B. The scores data structure is implemented as a dictionary and allows us to track probability of the sub tree rooted at a given nonterminal A over the index i to j. The backpointer is also implemented as a dictionary and is used to remember the most optimal substructures of the tree (which production rules where used and when) and allows us to reconstruct the parse tree.
+The pseudocode above gives a rough sketch of the CYK algorithm, during our application we also had to add in the unary production rules such as ``A->B``. The scores data structure is implemented as a dictionary and allows us to track probability of the sub tree rooted at a given nonterminal A over the index i to j. The backpointer is also implemented as a dictionary and is used to remember the most optimal substructures of the tree (which production rules where used and when) and allows us to reconstruct the parse tree.
 
 
 ### 3. Results
