@@ -10,7 +10,7 @@
 Parsing in NLP is the process of determining the syntactic structure of a text by analyzing its words according to an underlying grammar. A grammar is composed of multiple terminals (tokens), non-terminals (grammatical entities such as "noun phrase"), and associated rules that generate the terminals and non-terminals. An example of a grammar and a parse tree for the sentence **"the giraffe dreams"** is shown below <sup>[1](#parse_example)</sup> . Successfully parsing novel sentences is a pivotal component of many NLP applications including machine translation  as well as infering semantic meaning as evidenced in question answering systems. 
 
 
-<img src="images/ParseTreeExample.JPG.JPG?raw=true"/>
+<img src="images/ParseTreeExample.JPG?raw=true"/>
 
 ### 2. CYK Parsing
 
