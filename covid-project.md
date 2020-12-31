@@ -1,11 +1,11 @@
-## Implementation and Evaluation of the DANCER Framework for Academic Article Summarization
+## US County Level COVID-19 Forecasting
 
-Joint Work: Aathira Manoj, Minji Kim
 
 [Paper](/pdf/CovidPaper.pdf)
 <br>
 [Code](https://github.com/ls5122/COVID)
-
+<br>
+[Dashboard](https://covid-ls.herokuapp.com/)
 **Overview** The new daily counts of COVID-19 across the most populous 1250 U.S. counties is predicted using a modified compartmental epidemiological model, denoted NNMRA-SEIR. Modifications to traditional compartmental models include localized measures of nearby outbreak severity through a nearest neighbor heuristic. The ability of NNMRA-SEIR to predict COVID-19 cases is shown to outperform a baseline SEIR model on a multi week prediction task. Further, NNMRA-SEIR indicates a tighter fit around the true infection curve compared to a baseline SEIR model.
 
 ### 1. Compartmental Epidemiological Modelling (SEIR)
@@ -19,46 +19,47 @@ The diagram above indicates the compartments of the SEIR model, every arrow corr
 
 <img src="images/SEIR_equations.JPG?raw=true"/>
 
-### 2. Problem Statement
 
-Our goal is to evaluate and compare the performance of DANCER by using different scoring metrics for splitting the document summary into different sections. In particular, we use ROUGE-L <sup>[2](#rouge)</sup> and BLEU <sup>[3](#bleu)</sup> scores to generate the section-wise summaries from the main summary for training. We use the Pointer Generator, based on the sequence-to-sequence RNN paradigm, as the main summarization model. Finally, we compare the performance of the DANCER model with a baseline model, which also uses Pointer Generator, but does not split the main summary into section-wise summaries. We use a subset of a publicly available pre-processed ArXiv dataset for our experiments. The performance of different models is evaluated using ROUGE scores. 
+### 2. Contributions (NNMAR)
 
-A general outline of our approach is given below. 
+We were able to improve on the predictive power of the baseline SEIR model by making adjustments to the difference equations concerning localized outbreak metrics. Fitting an SEIR model for a given county results in a predictive capacity that relies only on the time series infection data and ignores the physical proximity to epicenters. A county's physical proximity to epicenters provides insight into the infection risk it faces. For this reason we devise Attack Rate denoted AR and nearest neighbor mean attack rate denoted NNMAR.
 
-* Use the DANCER method to generate training datasets using the ROUGE-LCS score and the BLEU-Corpus score. Generate a baseline dataset which does not use this approach.
-* Train Pointer Generator Seq2Seq summarizer separately on all these datasets. 
-* While testing, use the trained weights of the Pointer Generator model to generate section-wise summaries and concatenate them to generate the final summary .
-* Evaluate the different models according to different ROUGE scores.
+```
+AR = TotalInfected / Population
 
-### 3. Pointer Generator Model
+NNMAR(d): Average(AR)N(d)
+```
 
-The Pointer Generator <sup>[4](#pointer)</sup> is a sequence to sequence neural model that provides abstract text summarization. The model consists of an encoder and decoder phase. Through a combination of pointing at words in the source text and generating words from the vocabulary distribution this model can be seen as a hybrid summarization model. The model uses a coverage mechanism to minimize the repetition of copied words. 
-
-The input source text is embedded and fed into a bidirectional LSTM, the red network in the diagram. This network serves as the encoder and produces a set of hidden states. Decoding takes place one token at a time. For each timestep the decoder gives rise to decoder states which during training correspond to the word embedding of the previous word. Together these combine to create the attention distribution.
-
-Next using the attention distribution the context vector is constructed as a dot product between the attention distribution and the hidden states. The attention distribution guides the decoder towards the next word while the context vector serves to produce the distribution over all words in the vocabulary P(x) as well as the pointer generator probability W which gives us the option to copy words from the source text according to  S(x), the source distribution. Output tokens are produced according to
-
-``F(x) = W*P(x) + (1-W)*S(x)`` 
+Where `N(d)` indicates the neighborhood of counties within d units of longitude & latitude. For simplification we set d=1 with NNMAR referring to NNMAR(1). The NNMAR is used as a measure of localized infection and it is incorporated into the difference equations concerning the Exposed and Infected compartments. 
 
 
-<img src="images/white_ptr_gen.png?raw=true"/>
+### 3. Experimental Setup 
+
+***Problem Statement:*** For the most populous 1250 US counties predict the number of new daily infections 3 weeks ahead using a NNMAR-modified SEIR model. Compare the RMSE fit of the modified SEIR model with a baseline SEIR model. Furthermore, compare the predicted new cases over the next 3 weeks with baseline SEIR. 
+
+***Data:*** The primary dataset can be attributed to the NYTimes, COVID-19 Cases by US County are made available and updated daily <sup>[2](#covid)</sup>. The county specific population data is provided by the US Census Bureau <sup>[3](#population)</sup>. The final dataframe was constructed by joining the base COVID-19 infection counts with US census bureau population data and Tableau generated longitude and latitude locations for each county. 
+
+***Results:***  To evaluate the model we tested it on a 3 week prediction task. We selected the top 1250 most populous counties.  We took a NNMAR curve for each county after excluding the last 3 weeks of case counts. Then, for each county we calculated the RMSE between its 3 separate weekly predictions and the true confirmed case counts. Finally we took the average of these over all 1250 counties. This prediction task was done on both a baseline SEIR model and the NNMAR-SEIR model in order to compare results. 
+The RMSE is shown for the two prediction tasks. 
+
+<img src="images/CovidResults.JPG?raw=true"/>
 
 
-### 4. Results
+### 4. Forecasting
 
-To test the efficacy of the DANCER framework we compared a baseline Pointer Generator model against one which used the ROUGE-LCS and one which used the BLEU scores to split summaries. We trained on 8000 articles and tested on 1000 articles. The results indicate the ROUGE-LCS as being superior on a variety of metrics when compared to both the BLEU and Baseline model.
+Finally we constructed a dashboard using Tableau to visualize the county level case numbers across the United States. The dashboard was constructed using data up to June 20th 2020 and provided forecasts over the 1250 most populous US-Counties up to August 10th 2020 below we display the dashboard for the two values respectively. 
 
-<img src="images/summary_comparison2.jpg?raw=true"/>
+<img src="images/CovidJune20.JPG?raw=true"/>
 
 
-Finally we show an example of a target abstract with both the ROUGE and BLEU summaries. One can see evidence of both source and vocab distributions.
+<img src="images/CovidAug10.JPG?raw=true"/>
 
-<img src="images/summary_example.png?raw=true"/>
+
+
+Work was done as a project in the context of NYU Graduate Big Data and ML Systems Course
 
 <a name="seir">[1]</a>: Vynnycky, E.; White, R. G., eds. (2010). An Introduction to Infectious Disease Modelling. Oxford: Oxford University Press.
 
-<a name="rouge">[2]</a>: Chin-Yew  Lin.  2004.   ROUGE:  A  package  for  automatic evaluation of summaries.  In Text Summarization Branches Out, pages 74–81, Barcelona, Spain. Association for Computational Linguistics.
+<a name="covid">[2]</a>:  The New York Times. (2020). Coronavirus (Covid-19) Data in the United States, from https://github.com/nytimes/covid-19-data.
 
-<a name="bleu">[3]</a>: Kishore Papineni, Salim Roukos, Todd Ward, and Wei-Jing  Zhu.  2002. Bleu:  A  method  for  automatic evaluation of machine translation.  ACL ’02,  page 311–318, USA. Association for Computational Linguistics
-
-<a name="pointer">[4]</a>: Abigail See, Peter J. Liu, and Christopher D. Manning. 2017. Get to the point: Summarization with pointer-generator networks.
+<a name="population">[3]</a>: US Census. County Population Totals: 2010-2019, from https://www.census.gov/data/datasets/time-series/demo/popest/2010s-counties-total.html 
