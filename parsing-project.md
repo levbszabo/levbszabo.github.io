@@ -10,11 +10,11 @@
 Parsing in NLP is the process of determining the syntactic structure of a text by analyzing its words according to an underlying grammar. A grammar is composed of multiple terminals (tokens), non-terminals (grammatical entities such as "noun phrase"), and associated rules that generate the terminals and non-terminals. An example of a grammar and a parse tree for the sentence **"the giraffe dreams"** is shown below <sup>[1](#parse_example)</sup> . Successfully parsing novel sentences is a pivotal component of many NLP applications including machine translation  as well as infering semantic meaning as evidenced in question answering systems. 
 
 
-<img src="images/ParsingExample.JPG?raw=true"/>
+<img src="images/ParseTreeExample.JPG.JPG?raw=true"/>
 
 ### 2. CYK Parsing
 
-The extended Cocke–Younger–Kasami (CYK) algorithm for given probabilistic context-free grammars (PCFGs) is an inference algorithm that utilizes dynamic programming to find the most likely parse tree of a given sentence according to production probabilities. The CYK algorithm has a worst case running time of O(n^3 * |G|) where G is the size of the grammar. 
+The extended Cocke–Younger–Kasami (CYK) algorithm for given probabilistic context-free grammars (PCFGs) is an inference algorithm that utilizes dynamic programming to find the most likely parse tree of a given sentence according to production probabilities. The CYK algorithm has a worst case running time of ``O(n^3 * |G|)`` where G is the size of the grammar. 
 
 <img src="images/dancer_training.JPG?raw=true"/>
 
