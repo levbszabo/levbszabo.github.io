@@ -14,46 +14,13 @@ Parsing in NLP is the process of determining the syntactic structure of a text b
 
 ### 2. CYK Parsing
 
-The extended Cocke–Younger–Kasami (CYK) algorithm for given probabilistic context-free grammars (PCFGs) is an inference algorithm that utilizes dynamic programming to find the most likely parse tree of a given sentence according to production probabilities. The CYK algorithm has a worst case running time of ``O(n^3 * |G|)`` where G is the size of the grammar. 
-
-<img src="images/dancer_training.JPG?raw=true"/>
-
-
-- input string I consists of tokens a1...an
-- grammar contains r nonterminals R1...Rr with start R1
-
-1. CYK tries to find tree t that maximizes p(t) 
-	With p(t) being product of probabilities of all rules to produce tokens
-2. Sentence x1...xn 
-	T(i,j,X)   with X nonterminal is the set of all
-	parse trees for words x
-
-3. Define pi(i,j,X) = max p(t)  over all t in T(i,j,X)
-	pi(i,j,X) = 0 if T(i,j,X) is empty
-
-4. pi(i,j,X) is highest score for any parse tree that dominates words
-xi...xj and has X as root. 
-
-
-5. Final solution will be  pi(1,n,S) 
-
-6. We can use recursive definition of pi allowing bottom up dynamic programming
-   1. First fill in pi(i,j,X) for j = i then for j = i+1
-
-7. Base case:
-	For all i =1..n  for all X in nonterminals 
-
-	pi(i,i,X) = p(X -> x_i) or 0 if no such rule
-
-
-8. Recursive Definition: 
-	For all i,j where 1<= i < j <= n for all X in Nonterm
-	pi(i,j,X) = max ( p(X-> YZ) * pi(i,s,Y) * pi(s+1,j,Z))
-
-9. Keep a backpointer bp(i,j,X) for all values of (i,j,X)
-	These record X->YZ and split point s that is argmax
+The extended Cocke–Younger–Kasami (CYK) algorithm for given probabilistic context-free grammars (PCFGs) is an inference algorithm that utilizes dynamic programming to find the most likely parse tree of a given sentence according to production probabilities. The CYK algorithm has a worst case running time of ``O(n^3 * |G|)`` where G is the size of the grammar. The CYK algorithm requires our Context Free Grammar (CFG) G to be in Chomsky Normal Form meaning that all production rules either produce 1 or 2 nonterminals or exactly 1 terminal. A probablistic context free grammar (PCFG) consists of Σ : terminals, N : non-terminals, R: production rules, S: start symbol.
  
-
+**Input:** A string x1...xn and PCFG = (Σ, N, R, S)
+``
+initialize bestScore[i,j][A] = 0  for all 0<=i<j<=n , A in N 
+initialize backpointer
+``
 
 ### 2. Problem Statement
 
