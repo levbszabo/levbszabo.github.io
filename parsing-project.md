@@ -14,7 +14,7 @@ Parsing in NLP is the process of determining the syntactic structure of a text b
 
 ### 2. CYK Parsing
 
-The extended Cocke–Younger–Kasami (CYK) algorithm for given probabilistic context-free grammars (PCFGs) is an inference algorithm that utilizes dynamic programming to find the most likely parse tree of a given sentence according to production probabilities. The CYK algorithm has a worst case running time of ``O(n^3 * |G|)`` where G is the size of the grammar. The CYK algorithm requires our Context Free Grammar (CFG) G to be in Chomsky Normal Form meaning that all production rules either produce 1 or 2 nonterminals or exactly 1 terminal. A probablistic context free grammar (PCFG) consists of Σ : terminals, N : non-terminals, R: production rules, S: start symbol.
+The extended Cocke–Younger–Kasami (CYK) algorithm for given probabilistic context-free grammars (PCFGs) is an inference algorithm that utilizes dynamic programming to find the most likely parse tree of a given sentence according to production probabilities. The CYK algorithm has a worst case running time of ``O(n^3 * |G|)`` where G is the size of the grammar. The CYK algorithm requires our Context Free Grammar (CFG) G to be in Chomsky Normal Form meaning that all production rules either produce 1 or 2 nonterminals or exactly 1 terminal. A probablistic context free grammar (PCFG) consists of Σ : terminals, N : non-terminals, R: production rules, S: start symbol. The algorithm first fills in the most likely production rules for producing the terminals and then continuous upwards in a bottom up fashion using dynamic programming.
  
  
 **Input:** A string x1...xn and PCFG = (Σ, N, R, S) 
@@ -22,6 +22,10 @@ The extended Cocke–Younger–Kasami (CYK) algorithm for given probabilistic co
 
 initialize bestScore[i,j][A] = 0  for all 0<=i<j<=n , A in N 
 initialize backpointer
+for i in [1,n] 
+    for A in N where (prob, A -> xi) in R
+        bestScore[i-1][i][A] <- max(prob, bestScore[i-1][i][A]
+        update backpointer
 ~~~~
 
 ### 2. Problem Statement
