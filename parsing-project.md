@@ -1,14 +1,11 @@
-## Implementation and Evaluation of the DANCER Framework for Academic Article Summarization
+## Implementation of a Probabilistic CYK Parser
 
-Joint Work: Aathira Manoj, Minji Kim
+[Code](https://github.com/ls5122/CYKParser)
 
-[Paper](/pdf/SummaryPaper.pdf)
-<br>
-[Powerpoint](/pdf/SummarySlides.pdf)
-<br>
-[Code](https://github.com/ls5122/ArxivSummary)
+**Overview*** We wish to parse sentences given specific grammar rules and their production probabilities over a corpus. Using the added probabilities 
+of production rules and bottom up dynamic programming, more specifically the CYK Parsing Algorithm we can generate the most likely parse tree. The parsing
+algorithm is tested on a subset of the WSJ treebank dataset. Over 10,000 grammar production rules are utilized to produce parse trees for new sentences.
 
-**Overview** Document summarization for academic articles is complicated by the document length, diversity and specialization of its vocabulary. The DANCER (Divide ANd ConquER) framework exploits the discourse structure of the document and uses sentence similarity to break a long document and its summary into multiple source-target pairs, which are used to train a summarization model. We assess the efficacy of the DANCER framework by using Pointer Generator as the summarization model and pairing it with different scoring metric (ROUGE-L, BLEU) for generating training samples. We evaluate its performance against a baseline model, which does not use DANCER. We use a subset of the publicly available arXiv dataset for our experiments.
 
 ### 1. Divide and Conquer
 
