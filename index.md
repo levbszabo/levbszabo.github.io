@@ -24,7 +24,8 @@
 <img src="images/street_speed.png?raw=true"/>
 
 --- 
-
+[US County Level COVID-19 Forecasting](/covid-project)
+<img src = "images/CovidExample.JPG?raw=true"/>
 
 - [Project 2 Title](http://example.com/)
 - [Project 3 Title](http://example.com/)
