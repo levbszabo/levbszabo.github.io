@@ -42,7 +42,7 @@ The pseudocode above gives a rough sketch of the CYK algorithm, during our appli
 
 ### 3. Results
 
-After parsing is completed we can retrieve the parse tree using the backpointer. If ``backpointer[0,n][S]`` is non-zero then we have a successful parsing. Then we continue down the tree according to the production rules until we have produced the entire sentence. For example if our first rule is S -> A B with parition i then we continue with ``backpointer[0,i][A]`` and ``backpointer[i,n][B]`` accordingly.  Our algorithm successfully parsed several sentences from the WSJ Treebank. An example for **"The Market is wondering what General Motors has done."** is shown below.
+After parsing is completed we can retrieve the parse tree using the backpointer. If ``backpointer[0,n][S]`` is non-zero then we have a successful parsing. Then we continue down the tree according to the production rules until we have produced the entire sentence. For example if our first rule is S -> A B with parition i then we continue with ``backpointer[0,i][A]`` and ``backpointer[i,n][B]`` accordingly.  Our algorithm successfully parsed several sentences from the WSJ Treebank. An example for **"The market is wondering what General Motors has done."** is shown below.
 
 <img src="images/ParsingExample.JPG?raw=true"/>
 
