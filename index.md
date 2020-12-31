@@ -25,7 +25,7 @@
 
 --- 
 [US County Level COVID-19 Forecasting](/covid-project)
-<img src = "images/CovidExample.JPG?raw=true"/>
+<img src = "images/CovidJune20.JPG?raw=true"/>
 
 - [Project 2 Title](http://example.com/)
 - [Project 3 Title](http://example.com/)
