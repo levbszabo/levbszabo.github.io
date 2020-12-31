@@ -12,62 +12,41 @@ Parsing in NLP is the process of determining the syntactic structure of a text b
 
 <img src="images/ParseTreeExample.JPG?raw=true"/>
 
-### 2. CYK Parsing
+### 2. Probabilistic CYK Parsing
 
-The extended Cocke–Younger–Kasami (CYK) algorithm for given probabilistic context-free grammars (PCFGs) is an inference algorithm that utilizes dynamic programming to find the most likely parse tree of a given sentence according to production probabilities. The CYK algorithm has a worst case running time of ``O(n^3 * |G|)`` where G is the size of the grammar. The CYK algorithm requires our Context Free Grammar (CFG) G to be in Chomsky Normal Form meaning that all production rules either produce 1 or 2 nonterminals or exactly 1 terminal. A probablistic context free grammar (PCFG) consists of Σ : terminals, N : non-terminals, R: production rules, S: start symbol. The algorithm first fills in the most likely production rules for producing the terminals and then continuous upwards in a bottom up fashion using dynamic programming.
+The extended Cocke–Younger–Kasami (CYK) algorithm for given probabilistic context-free grammars (PCFGs) is an inference algorithm that utilizes dynamic programming to find the most likely parse tree of a given sentence according to production probabilities. The CYK algorithm has a worst case running time of ``O(n^3 * |G|)`` where G is the size of the grammar. The CYK algorithm requires our Context Free Grammar (CFG) G to be in Chomsky Normal Form meaning that all production rules either produce 1 or 2 nonterminals or exactly 1 terminal. A probablistic context free grammar (PCFG) consists of Σ : terminals, N : non-terminals, R: production rules, S: start symbol. The algorithm first fills in the most likely production rules for producing the terminals and then continues upwards in a bottom up fashion using dynamic programming.
  
  
 **Input:** A string x1...xn and PCFG = (Σ, N, R, S) 
 ~~~~
 
-initialize bestScore[i,j][A] = 0  for all 0<=i<j<=n , A in N 
+initialize scores[i,j][A] = 0  for all 0<=i<j<=n , A in N 
 initialize backpointer
 for i in [1,n] 
     for A in N where (prob, A -> xi) in R
-        bestScore[i-1][i][A] <- max(prob, bestScore[i-1][i][A]
+        scores[i-1][i][A] <- max(prob, scores[i-1][i][A]
         update backpointer
+
+for l in [2,n]
+    for i in [0,n-l]
+        j = i+l
+        for k in [i+1,j-1]
+            for (prob, A -> BC) in R
+                scores[i][j][A] <- max(prob*scores[i][k][B] *  scores[k+1][j][C], scores[i][j][A]  
+                
 ~~~~
 
-### 2. Problem Statement
 
-Our goal is to evaluate and compare the performance of DANCER by using different scoring metrics for splitting the document summary into different sections. In particular, we use ROUGE-L <sup>[2](#rouge)</sup> and BLEU <sup>[3](#bleu)</sup> scores to generate the section-wise summaries from the main summary for training. We use the Pointer Generator, based on the sequence-to-sequence RNN paradigm, as the main summarization model. Finally, we compare the performance of the DANCER model with a baseline model, which also uses Pointer Generator, but does not split the main summary into section-wise summaries. We use a subset of a publicly available pre-processed ArXiv dataset for our experiments. The performance of different models is evaluated using ROUGE scores. 
-
-A general outline of our approach is given below. 
-
-* Use the DANCER method to generate training datasets using the ROUGE-LCS score and the BLEU-Corpus score. Generate a baseline dataset which does not use this approach.
-* Train Pointer Generator Seq2Seq summarizer separately on all these datasets. 
-* While testing, use the trained weights of the Pointer Generator model to generate section-wise summaries and concatenate them to generate the final summary .
-* Evaluate the different models according to different ROUGE scores.
-
-### 3. Pointer Generator Model
-
-The Pointer Generator <sup>[4](#pointer)</sup> is a sequence to sequence neural model that provides abstract text summarization. The model consists of an encoder and decoder phase. Through a combination of pointing at words in the source text and generating words from the vocabulary distribution this model can be seen as a hybrid summarization model. The model uses a coverage mechanism to minimize the repetition of copied words. 
-
-The input source text is embedded and fed into a bidirectional LSTM, the red network in the diagram. This network serves as the encoder and produces a set of hidden states. Decoding takes place one token at a time. For each timestep the decoder gives rise to decoder states which during training correspond to the word embedding of the previous word. Together these combine to create the attention distribution.
-
-Next using the attention distribution the context vector is constructed as a dot product between the attention distribution and the hidden states. The attention distribution guides the decoder towards the next word while the context vector serves to produce the distribution over all words in the vocabulary P(x) as well as the pointer generator probability W which gives us the option to copy words from the source text according to  S(x), the source distribution. Output tokens are produced according to
-
-``F(x) = W*P(x) + (1-W)*S(x)`` 
+The pseudocode above gives a rough sketch of the CKY algorithm, during our application we also had to add in the unary production rules such as A->B. The scores data structure is implemented as a dictionary and allows us to track probability of the sub tree rooted at a given nonterminal A over the index i to j. The backpointer is also implemented as a dictionary and is used to remember the most optimal substructures of the tree (which production rules where used and when) and allows us to reconstruct the parse tree.
 
 
-<img src="images/white_ptr_gen.png?raw=true"/>
+### 3. Results
+
+After parsing is completed we can retrieve the parse tree using the backpointer. If ``backpointer[0,n][S]`` is non-zero then we have a successful parsing. Then we continue down the tree according to the production rules until we have produced the entire sentence. For example if our first rule is S -> A B with parition i then we continue with ``backpointer[0,i][A]`` and ``backpointer[i,n][B]`` accordingly.  Our algorithm successfully parsed several sentences from the WSJ Treebank. An example for **"The Market is wondering what General Motors has done."** is shown below.
+
+<img src="images/ParsingExample.JPG?raw=true"/>
 
 
-### 4. Results
-
-To test the efficacy of the DANCER framework we compared a baseline Pointer Generator model against one which used the ROUGE-LCS and one which used the BLEU scores to split summaries. We trained on 8000 articles and tested on 1000 articles. The results indicate the ROUGE-LCS as being superior on a variety of metrics when compared to both the BLEU and Baseline model.
-
-<img src="images/summary_comparison2.jpg?raw=true"/>
-
-
-Finally we show an example of a target abstract with both the ROUGE and BLEU summaries. One can see evidence of both source and vocab distributions.
-
-<img src="images/summary_example.png?raw=true"/>
+Developed in context of NYU Graduate Natural Language Processing Course
 
 <a name="parse_example">[1]</a>: Allen, James, Natural Language Understanding 2e, Benjamin Cummings, 1995. 
-
-<a name="rouge">[2]</a>: Chin-Yew  Lin.  2004.   ROUGE:  A  package  for  automatic evaluation of summaries.  In Text Summarization Branches Out, pages 74–81, Barcelona, Spain. Association for Computational Linguistics.
-
-<a name="bleu">[3]</a>: Kishore Papineni, Salim Roukos, Todd Ward, and Wei-Jing  Zhu.  2002. Bleu:  A  method  for  automatic evaluation of machine translation.  ACL ’02,  page 311–318, USA. Association for Computational Linguistics
-
-<a name="pointer">[4]</a>: Abigail See, Peter J. Liu, and Christopher D. Manning. 2017. Get to the point: Summarization with pointer-generator networks.
