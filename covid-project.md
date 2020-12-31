@@ -6,6 +6,8 @@
 [Code](https://github.com/ls5122/COVID)
 <br>
 [Dashboard](https://covid-ls.herokuapp.com/)
+
+
 **Overview** The new daily counts of COVID-19 across the most populous 1250 U.S. counties is predicted using a modified compartmental epidemiological model, denoted NNMRA-SEIR. Modifications to traditional compartmental models include localized measures of nearby outbreak severity through a nearest neighbor heuristic. The ability of NNMRA-SEIR to predict COVID-19 cases is shown to outperform a baseline SEIR model on a multi week prediction task. Further, NNMRA-SEIR indicates a tighter fit around the true infection curve compared to a baseline SEIR model.
 
 ### 1. Compartmental Epidemiological Modelling (SEIR)
@@ -27,7 +29,7 @@ We were able to improve on the predictive power of the baseline SEIR model by ma
 ```
 AR = TotalInfected / Population
 
-NNMAR(d): Average(AR)N(d)
+NNMAR(d): Average(AR)*N(d)
 ```
 
 Where `N(d)` indicates the neighborhood of counties within d units of longitude & latitude. For simplification we set d=1 with NNMAR referring to NNMAR(1). The NNMAR is used as a measure of localized infection and it is incorporated into the difference equations concerning the Exposed and Infected compartments. 
@@ -39,7 +41,7 @@ Where `N(d)` indicates the neighborhood of counties within d units of longitude 
 
 ***Data:*** The primary dataset can be attributed to the NYTimes, COVID-19 Cases by US County are made available and updated daily <sup>[2](#covid)</sup>. The county specific population data is provided by the US Census Bureau <sup>[3](#population)</sup>. The final dataframe was constructed by joining the base COVID-19 infection counts with US census bureau population data and Tableau generated longitude and latitude locations for each county. 
 
-***Results:***  To evaluate the model we tested it on a 3 week prediction task. We selected the top 1250 most populous counties.  We took a NNMAR curve for each county after excluding the last 3 weeks of case counts. Then, for each county we calculated the RMSE between its 3 separate weekly predictions and the true confirmed case counts. Finally we took the average of these over all 1250 counties. This prediction task was done on both a baseline SEIR model and the NNMAR-SEIR model in order to compare results. 
+***Results:***  To evaluate the model we tested it on a 3 week prediction task. We selected the top 1250 most populous counties.  We took a NNMAR curve for each county after excluding the last 3 weeks of case counts. Then, for each county we calculated the RMSE between its 3 separate weekly predictions and the true confirmed case counts. Finally we took the average of these over all counties. This prediction task was done on both a baseline SEIR model and the NNMAR-SEIR model in order to compare results. 
 The RMSE is shown for the two prediction tasks. 
 
 <img src="images/CovidResults.JPG?raw=true"/>
@@ -47,7 +49,7 @@ The RMSE is shown for the two prediction tasks.
 
 ### 4. Forecasting
 
-Finally we constructed a dashboard using Tableau to visualize the county level case numbers across the United States. The dashboard was constructed using data up to June 20th 2020 and provided forecasts over the 1250 most populous US-Counties up to August 10th 2020 below we display the dashboard for the two values respectively. 
+Finally we constructed a dashboard using Tableau to visualize the county level case numbers across the United States. The dashboard was constructed using data up to June 20th 2020 and provided forecasts over the 1250 most populous US-Counties up to August 10th 2020, below we display the dashboard for the two values respectively. The algorithm effectively predicts the surge in new COVID-19 cases across the southern and western regions of the United States which occured during Summer 2020. 
 
 <img src="images/CovidJune20.JPG?raw=true"/>
 
