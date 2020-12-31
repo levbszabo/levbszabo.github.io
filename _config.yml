@@ -7,6 +7,8 @@ description: > # your text below (remove <br> elements if you don't need line br
   <br>
   New York University
   <br><br>
+  Email: levbszabo@gmail.com
+  <br><br>
   <a href="https://www.linkedin.com/in/levente1szabo">View My LinkedIn Profile</a> 
   
 theme: jekyll-theme-minimal
