@@ -2,6 +2,15 @@
 
 ---
 
+### Data Engineering
+
+[Analytics of r/WallStreetBets](/wsb-project)
+<img src="images/AWS-Architecture-portfolio.png?raw=true"/>
+
+---
+
+---
+
 ### Natural Language Processing
 
 [Analysis of COVID Vaccine Sentiment Using Twitter](/vaccine-project)
