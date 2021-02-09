@@ -18,9 +18,9 @@ phase.
 <img src="images/wsb-architecture.PNG?raw=true"/>
 ### 2. Data Ingestion and Buffering
 
-A Linux VM is configured to ingest comments from the forum using <a href = https://praw.readthedocs.io/en/latest/> Python Reddit Api Wrapper </a> messages
+A Linux VM is configured to ingest comments from the forum using [Python Reddit Api Wrapper](https://praw.readthedocs.io/en/latest), messages
 are then published to a GCP Pub/Sub topic which is a distributed scalable messaging service and ensures reliability of data ingestion. Next we utilize
-the GPC Dataflow service which connects the published messages to BigQuery our data warehouse.
+the GCP Dataflow service which connects the published messages to BigQuery, our data warehouse.
 
 ### 3. Data Storage
 
@@ -33,6 +33,7 @@ This allows our analytics output to be much smaller in size than the overall dat
 Tableau is used to connect to BigQuery and display data visualizations. This dashboard is then published on Tableau Public with data extraction automatically
 refreshed when new queries are scheduled in BigQuery.
 
+[Dashboard](https://public.tableau.com/profile/levente.szabo#!/vizhome/wsb-viz/Dashboard1)
 
 ### 5. Deployment
 
