@@ -5,7 +5,7 @@
 ### Data Engineering
 
 [Analytics of r/WallStreetBets](/wsb-project)
-<img src="images/AWS-Architecture-portfolio.png?raw=true"/>
+<img src="images/wsb-architecture.PNG?raw=true"/>
 
 ---
 
