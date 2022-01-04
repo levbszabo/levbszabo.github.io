@@ -2,9 +2,6 @@
 
 Joint Work: Dr. Annasse Bari, Ryan Cohen
 
-[Paper](/pdf/SentimentPaper.pdf)
-<br>
-[Powerpoint](/pdf/SentimentSlides.pdf)
 
 **Overview** With multiple COVID vaccines in rapid development, we anticipate a variety of barriers regarding widespread vaccination. In order to gauge public perception regarding vaccination we construct a sentiment analysis system that analyzes Twitter data in real time. To facilitate healthcare professionals in overcoming vaccine hesitancy ours system gives insight into the reasoning behind specific attitudes as well as highlighting spatiotemporal differences
 
