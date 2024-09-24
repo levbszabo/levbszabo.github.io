@@ -13,5 +13,3 @@ Slides:
  
 I go through the design and software components I used to build an AI appointment setting agent for my business. By combining Twilio with Langchain and OpenAI, we lay the groundwork for dynamic AI-facilitated communication over SMS. This framework allows us to customize prompts and add tools to create tailored agents that can meet our clients' needs efficiently.
 
-Try out a live demo at [www.journeymanai.io](https://www.journeymanai.io)
-(scroll down to fill in your phone number to text with our SMS agent)
