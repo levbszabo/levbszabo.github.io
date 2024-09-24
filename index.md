@@ -6,18 +6,18 @@
 
 ---
 
-[Brdge.AI: Async Knowledge Transfer]
+[Brdge.AI: Async Knowledge Transfer](/brdge-ai)
 <img src="images/brdge-ai-img.png?raw=true"/>
 
 
 ---
 
-[SMS Based Agents] 
+[SMS Based Agents](/sms-ai)
 <img src="images/sms-agents-img.png?raw=true"/>
 
 ---
 
-[Sales Prep AI - Conversational AI Prospecting] 
+[Sales Prep AI - Conversational AI Prospecting](/sales-ai) 
 <img src="images/sales-prospect-ai.png?raw=true"/>
 
 ---
