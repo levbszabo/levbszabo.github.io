@@ -10,9 +10,8 @@ Video:
 
 Slides:
 [SMS AI Agents](https://docs.google.com/presentation/d/1zlhgLwvSohC-lQTxafzNP0YVV8pr09905q9KAHwBuCA/edit?usp=sharing)
+ 
+I go through the design and software components I used to build an AI appointment setting agent for my business. By combining Twilio with Langchain and OpenAI, we lay the groundwork for dynamic AI-facilitated communication over SMS. This framework allows us to customize prompts and add tools to create tailored agents that can meet our clients' needs efficiently.
 
 Try out a live demo at [www.journeymanai.io](https://www.journeymanai.io)
 (scroll down to fill in your phone number to text with our SMS agent)
- 
-Innovative solution involves a Chat based AI assistant designed to help customers find items, explain product details, and upsell relevant products. I'll take you through our journey from problem identification to the development of a Minimum Viable Product (MVP) built with OpenAI GPT-4 and a vector-based self-querying retriever for accurate product recommendations. For this project we use Langraph agents and vector based RAG system that uses metadata filtering. 
-
