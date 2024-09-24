@@ -3,6 +3,9 @@
 
 
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/Z_3a0QV6mmQ/0.jpg)](http://www.youtube.com/watch?v=Z_3a0QV6mmQ "AI Shopping Assistant - Built using LangGraph")
+
+
+
 [AI Shopping Assistant - Built using LangGraph](https://youtu.be/Z_3a0QV6mmQ)
 
  
