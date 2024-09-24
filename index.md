@@ -18,7 +18,7 @@
 ---
 
 [Sales Prep AI - Conversational AI Prospecting] 
-<img src=
+<img src="images/sales-prospect-ai.png?raw=true"/>
 
 ---
 ---
