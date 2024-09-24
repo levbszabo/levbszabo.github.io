@@ -2,7 +2,7 @@
 
 ### Applied Generative AI
 [AI Shopping Assistant: metadata filtering with RAG](/ai-shopping)
-<img src="images/shopping-assistant.png?raw=true"/>
+<img src="images/shopping-assistant.png?raw=true" width="269" height="324"/>
 
 ---
 
