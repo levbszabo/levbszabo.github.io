@@ -7,6 +7,8 @@
 ---
 
 [Brdge.AI: Async Knowledge Transfer]
+<img src="images/brdge-ai-img.jpeg?raw=true"/>
+
 
 ---
 
