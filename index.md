@@ -1,5 +1,26 @@
 ## Portfolio
 
+### Applied Generative AI
+[AI Shopping Assistant: metadata filtering with RAG]
+
+---
+
+[Brdge.AI: Async Knowledge Transfer]
+
+---
+
+[SMS Based Agents] 
+
+---
+
+[Voice AI agent using Bland for Auto-Sales] 
+
+
+---
+
+[Sales Prep AI - Conversational AI Prospecting] 
+
+---
 ---
 
 ### Data Engineering
