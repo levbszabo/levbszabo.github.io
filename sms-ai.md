@@ -9,7 +9,7 @@ Video:
 [SMS Based AI Agents - Using Langchain and GPT4](https://youtu.be/WnY5O7VU0J4)
 
 Slides:
-https://docs.google.com/presentation/d/1zlhgLwvSohC-lQTxafzNP0YVV8pr09905q9KAHwBuCA/edit?usp=sharing
+[SMS AI Agents](https://docs.google.com/presentation/d/1zlhgLwvSohC-lQTxafzNP0YVV8pr09905q9KAHwBuCA/edit?usp=sharing)
 
 
  
