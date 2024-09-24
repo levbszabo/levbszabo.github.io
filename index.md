@@ -1,7 +1,8 @@
 ## Portfolio
 
 ### Applied Generative AI
-[AI Shopping Assistant: metadata filtering with RAG]
+[AI Shopping Assistant: metadata filtering with RAG](/ai-shopping)
+
 
 ---
 
