@@ -17,12 +17,8 @@
 
 ---
 
-[Voice AI agent using Bland for Auto-Sales] 
-
-
----
-
 [Sales Prep AI - Conversational AI Prospecting] 
+<img src=
 
 ---
 ---
