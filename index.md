@@ -13,6 +13,7 @@
 ---
 
 [SMS Based Agents] 
+<img src="images/sms-agents-img.png?raw=true"/>
 
 ---
 
