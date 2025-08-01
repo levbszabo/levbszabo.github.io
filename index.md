@@ -1,14 +1,14 @@
 ## Portfolio
 
-### Applied Generative AI
-[AI Shopping Assistant: metadata filter & RAG](/ai-shopping)
-<img src="images/shopping-assistant.png?raw=true" width="269" height="324"/>
+### Unsupervised Learning - Finance
+[Market Manifolds: Geometry-Aware Latent Representations via β-VAE](/market-manifolds)
+<img src="images/clustering1.jpg?raw=true"/>
 
 ---
 
-[Market Manifolds: Geometry-Aware Latent Representations via β-VAE](/market-manifolds)
-<img src="images/market-manifolds-placeholder.png?raw=true"/>
-
+### Applied Generative AI
+[AI Shopping Assistant: metadata filter & RAG](/ai-shopping)
+<img src="images/shopping-assistant.png?raw=true" width="269" height="324"/>
 
 ---
 
@@ -56,4 +56,3 @@
 --- 
 [US County Level COVID-19 Forecasting](/covid-project)
 <img src = "images/CovidJune20.JPG?raw=true"/>
-

@@ -4,7 +4,7 @@
 
 [**GitHub Repository**](https://github.com/levbszabo/market-latent-geometry) | [**Research Paper (PDF)**](/pdf/MarketManifolds_VAE.pdf)
 
-<img src="images/market-manifolds-placeholder.png?raw=true"/>
+<img src="images/clustering1.jpg?raw=true"/>
 
 **Overview:** This project implements a novel framework for discovering the intrinsic geometry of financial time series through β-variational autoencoders. By treating the VAE decoder as a parameterization of an embedded manifold, we compute Riemannian metric tensors and geodesic distances that respect the learned curvature of market states, enabling geometry-aware analysis and clustering.
 
