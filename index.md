@@ -6,8 +6,8 @@
 
 ---
 
-[Brdge.AI: Async Knowledge Transfer](/brdge-ai)
-<img src="images/brdge-ai-img.png?raw=true"/>
+[Market Manifolds: Geometry-Aware Latent Representations via β-VAE](/market-manifolds)
+<img src="images/market-manifolds-placeholder.png?raw=true"/>
 
 
 ---
