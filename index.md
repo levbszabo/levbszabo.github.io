@@ -11,6 +11,10 @@
 <img src="images/dotbridge-cover.png?raw=true"/>
 
 ---
+[Miami Beach Hotel Arbitrage — Alternative Data Alpha Generation](/alternative-data-research)
+<img src="images/miami-beach-hotel1.jpg?raw=true"/>
+
+---
 [AI Shopping Assistant: metadata filter & RAG](/ai-shopping)
 <img src="images/shopping-assistant.png?raw=true" width="269" height="324"/>
 
