@@ -7,6 +7,10 @@
 ---
 
 ### Applied Generative AI
+[DotBridge – Multimodal AI Knowledge Extraction Framework](/dotbridge)
+<img src="images/brdge-ai-img.png?raw=true"/>
+
+---
 [AI Shopping Assistant: metadata filter & RAG](/ai-shopping)
 <img src="images/shopping-assistant.png?raw=true" width="269" height="324"/>
 
