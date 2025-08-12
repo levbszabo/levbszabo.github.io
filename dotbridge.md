@@ -1,8 +1,17 @@
-## DotBridge – Multimodal AI Knowledge Extraction Framework
+## DotBridge – Multimodal AI for Video: Knowledge Graphs & Voice Agents
 
-<img src="images/brdge-ai-img.png?raw=true"/>
+<em>Framework for turning passive video into interactive, queryable knowledge with real-time voice agents.</em>
+
+<img src="images/dotbridge-cover.png?raw=true" alt="DotBridge UI: timeline-aligned video with chat, persona, and engagement tools"/>
 
 **Overview:** DotBridge is an open-source research framework for systematic knowledge extraction from multimodal content (video, audio, text). It converts raw videos into temporally aligned transcripts and structured knowledge graphs, then orchestrates LLMs and real-time voice to enable interactive, conversational Q&A grounded in the source content. Originally built as a commercial product, it is now open-sourced to advance research in agent architectures, knowledge graph construction, and real-time AI.
+
+### At a Glance
+
+- Processes ~10-minute videos in ~30 seconds for extraction
+- Sub-200ms real-time voice agent responses via streaming
+- ~7.4k lines across Python backend and React frontend
+- Stack: Python, Flask, React, Gemini 2.0/2.5, GPT‑4, LiveKit, Deepgram, Cartesia, SQL/embeddings, AWS
 
 ### Key Innovations
 
@@ -25,12 +34,43 @@ Python (3.8+), Flask, React (18+), Google Gemini 2.0/2.5, OpenAI GPT‑4, LiveKi
 ### Links
 
 - **GitHub Repository:** [levbszabo/dotbridge](https://github.com/levbszabo/dotbridge)
-- **Project Website:** [dotbridge.io](https://www.dotbridge.io)
+- **System Design (in repo):** https://github.com/levbszabo/dotbridge/blob/main/SYSTEM_DESIGN.md
 
 > Note: This project was initially pursued commercially. I realized my strengths and interests align most with research and engineering, so I open-sourced DotBridge to contribute to the community and focus on advancing multimodal AI research.
 
 ---
 
 References: [GitHub – DotBridge](https://github.com/levbszabo/dotbridge)
+
+### How It Works
+
+1. Ingest video/audio and documents
+2. Transcribe, segment, and align timeline
+3. Extract entities, topics, and relations into a timestamped knowledge graph
+4. Index for retrieval and reasoning (LLM-driven)
+5. Serve real-time conversational agent (ASR → LLM → TTS) over WebRTC
+
+### Use Cases
+
+- Financial research: earnings calls, webinars, slide walkthroughs
+- Education: lecture exploration and interactive study aids
+- Product onboarding: interactive tutorials and support
+
+### Getting Started
+
+```bash
+# Clone and setup
+git clone https://github.com/levbszabo/dotbridge.git
+cd dotbridge
+python -m venv venv && source venv/bin/activate
+pip install -r backend/requirements.txt
+
+# Configure
+cp config.txt backend/.env
+# Edit backend/.env with at least GOOGLE_API_KEY
+
+# Extract knowledge from your content
+python quickstart_extraction.py --video /path/to/video.mp4 --document /path/to/document.pdf
+```
 
 
