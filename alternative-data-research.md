@@ -4,6 +4,10 @@
 
 **Executive Summary:** Signal-driven acquisition and repositioning of a five-hotel, 356-key Miami Beach portfolio. We used alternative data to surface a quantifiable “crisis of competence” in 3–4 star assets and a management arbitrage among low‑touch operators. Modeled outcomes: 26.5% levered IRR and 2.85× equity multiple over five years (20%+ IRR in downside).
 
+### Download
+
+- Full case study (PDF): [/pdf/MiamiHotel-CaseStudy.pdf](/pdf/MiamiHotel-CaseStudy.pdf)
+
 ### At a Glance
 
 - Portfolio: 5 hotels, 356 keys
@@ -87,9 +91,7 @@ The opportunity exploits a widening bifurcation in Miami Beach: under-managed 3�
 5. Link operational improvements to valuation in a dynamic financial model; support scenario and stress testing
 6. Generalize the pipeline to new geographies, asset classes, and cycles
 
-### Download
 
-- Full case study (PDF): [/pdf/MiamiHotel-CaseStudy.pdf](/pdf/MiamiHotel-CaseStudy.pdf)
 
 > Disclaimer: Informational research summary only; not investment advice. All projections are illustrative and subject to change.
 
