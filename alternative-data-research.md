@@ -2,7 +2,7 @@
 
 <img src="images/miami-beach-hotel1.jpg?raw=true" alt="Placeholder: alternative data research visualization"/>
 
-**Executive Summary:** Signal-driven acquisition and repositioning of a five-hotel, 356-key Miami Beach portfolio. The strategy targets a quantified operational gap in the 3–4 star segment and a management-arbitrage created by low-touch operators. Modeled outcomes indicate a 26.5% levered IRR and a 2.85× equity multiple over a five-year hold, with 20%+ IRR in downside cases. Designed to be compelling for portfolio managers, hiring managers, AI researchers, and data scientists.
+**Executive Summary:** Signal-driven acquisition and repositioning of a five-hotel, 356-key Miami Beach portfolio. We used alternative data to surface a quantifiable “crisis of competence” in 3–4 star assets and a management arbitrage among low‑touch operators. Modeled outcomes: 26.5% levered IRR and 2.85× equity multiple over five years (20%+ IRR in downside).
 
 ### At a Glance
 
@@ -27,13 +27,13 @@ The opportunity exploits a widening bifurcation in Miami Beach: under-managed 3�
 - **Market/Regulatory Layer:** Integrated CBRE RevPAR forecasts and Miami Beach Ordinance 2025‑4717 to model supply constraints and the resulting regulatory moat.
 - **Entity Resolution & Geospatial Context:** Matched properties and operator/owner entities across data sources and placed them in neighborhood context (demand generators and competitive set) to support underwriting.
 
-### Methodology Deep Dive (Fun for PMs, Researchers, and Builders)
+### Methodology Deep Dive (for PMs, Researchers, Builders)
 
-- Time‑series review analytics: weekly negative‑review rate and trend breaks to separate sustained service breakdowns from noise.
-- Failure‑mode taxonomy: labeled review snippets into operational classes (HVAC, cleanliness, connectivity, booking/cancellation, staff/security) to estimate fix‑cost vs revenue impact.
-- Operator fingerprinting: grouped properties by failure‑signature profiles; the “ghost hotel” cluster aligned with low‑touch operators (no staff, remote support, cancellations).
-- Corporate event alignment: lined up review spikes with SEC events (e.g., auditor change, lease termination, deficiency notices) to validate distress in near‑real time.
-- Underwriting hooks: translated signal strength into occupancy/ADR penalties and informed PIP scope, timing, and expected payback.
+- Weekly review trends to detect real breakdowns vs noise.
+- Failure‑mode taxonomy (HVAC, cleanliness, connectivity, booking/cancel, staff/security) tied to revenue impact and PIP scope.
+- Operator fingerprinting: a distinct “ghost hotel” cluster (no staff, remote support, last‑minute cancellations).
+- Align review spikes with SEC events (auditor change, lease termination, deficiency notices) to validate distress.
+- Map signals to occupancy/ADR penalties and PIP payback.
 
 ### Alpha Signals
 
@@ -86,6 +86,10 @@ The opportunity exploits a widening bifurcation in Miami Beach: under-managed 3�
 4. Build a geospatial layer (competition, demand drivers) to contextualize pricing power
 5. Link operational improvements to valuation in a dynamic financial model; support scenario and stress testing
 6. Generalize the pipeline to new geographies, asset classes, and cycles
+
+### Download
+
+- Full case study (PDF): [/pdf/MiamiHotel-CaseStudy.pdf](/pdf/MiamiHotel-CaseStudy.pdf)
 
 > Disclaimer: Informational research summary only; not investment advice. All projections are illustrative and subject to change.
 
