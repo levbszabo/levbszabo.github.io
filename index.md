@@ -1,6 +1,12 @@
 ## Portfolio
 
-### Unsupervised Learning - Finance
+### Quantitative Finance & Machine Learning
+
+[Systematic FX Alpha from State-Space Neural Networks](/fx-trading-system)
+<img src="images/equity_curve_all.png?raw=true"/>
+
+---
+
 [Market Manifolds: Geometry-Aware Latent Representations via β-VAE](/market-manifolds)
 <img src="images/clustering1.jpg?raw=true"/>
 
