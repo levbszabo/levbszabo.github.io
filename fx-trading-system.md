@@ -6,9 +6,8 @@
 
 ### Executive Summary
 
-I developed a sophisticated FX trading system that combines deterministic state-space neural networks with confidence-gated signal generation to achieve **Sharpe ratios exceeding 2.0** on in-sample data and **1.75 out-of-sample**. The system processes hourly FX data across 7 major currency pairs through a Dreamer-style world model to predict multi-horizon returns, then uses statistical confidence gating and advanced portfolio construction to generate consistent alpha.
+I developed a sophisticated FX trading system that combines deterministic state-space neural networks with confidence-gated signal generation to achieve **Sharpe ratios exceeding 2.0** on in-sample data and **1.75 out-of-sample**. The system processes hourly FX data across 7 major currency pairs through a world model to predict multi-horizon returns, then uses statistical confidence gating and advanced portfolio construction to generate consistent alpha.
 
-### Key Innovation: Confidence-Weighted Signal Generation
 
 The core breakthrough is using **distributional forecasts** rather than point estimates. For each currency pair and time horizon (24h, 168h), the model predicts not just expected returns (μ) but also uncertainty (σ), allowing us to compute confidence scores:
 
@@ -90,11 +89,5 @@ I validated predictive power by sorting forecasts into ventiles (20 equal bucket
 3. **Cross-sectional USD Neutrality**: Market-neutral FX momentum strategy
 4. **Deterministic State-Space Trading**: First application to systematic FX alpha generation
 
-### Files & Documentation
-
-- **Research Paper**: 2-page professional summary with performance metrics and methodology
-- **Training Pipeline**: PyTorch implementation with deterministic/stochastic modes
-- **Backtesting Engine**: Full portfolio simulation with realistic costs and risk controls
-- **Signal Analysis**: Comprehensive ventile studies and threshold calibration
 
 This system demonstrates how modern deep learning can be combined with rigorous quantitative finance principles to generate sustainable alpha in competitive FX markets.
