@@ -1,100 +1,84 @@
 ## Systematic FX Alpha from State-Space Neural Networks
 
 **Tech Stack:** Python, PyTorch, Pandas, NumPy, Matplotlib  
-**Domain:** Quantitative Finance, Machine Learning, Algorithmic Trading  
-**Research Paper:** [📄 State-Space FX Alpha: Technical Summary (PDF)](/pdf/fx_trading_systematic.pdf)
+**Domain:** Quantitative Finance, Machine Learning, Systematic Trading  
+**Docs:** [📄 2-Page Technical Summary (PDF)](/pdf/fx_trading_systematic.pdf) • [📦 Code Repo](#) • [📊 Tear-Sheet / Paper-Trade Log](#)
 
-### Executive Summary
+### One-liner
+State-space model on hourly FX that produces **distributional** (Student-t) forecasts at 24h and 168h; z-score gating turns forecasts into a **USD-neutral, risk-controlled** cross-sectional strategy.
 
-I developed a sophisticated FX trading system that combines deterministic state-space neural networks with confidence-gated signal generation to achieve **Sharpe ratios exceeding 2.0** on in-sample data and **1.75 out-of-sample**. The system processes hourly FX data across 7 major currency pairs through a Dreamer-style world model to predict multi-horizon returns, then uses statistical confidence gating and advanced portfolio construction to generate consistent alpha.
+---
 
-### Key Innovation: Confidence-Weighted Signal Generation
+### At a glance (net of costs)
+**In-Sample (2019–2024)**  
+- **Sharpe:** 2.20 **CAGR:** 7.16% **Max DD:** −11.09% **Win:** 51.3%
 
-The core breakthrough is using **distributional forecasts** rather than point estimates. For each currency pair and time horizon (24h, 168h), the model predicts not just expected returns (μ) but also uncertainty (σ), allowing us to compute confidence scores:
+**Out-of-Sample (Feb–Aug 2025)**  
+- **Sharpe:** 1.75 **CAGR:** 15.87% **Max DD:** −3.85% **Win:** 52.7%
 
-```
-z-score = μ / σ
-```
+> Costs modeled with pair-specific spreads (~0.9–1.5 pips), half-spread at entry and exit.
 
-**Signal Logic:**
-- **Entry decisions** based on 168h z-scores exceeding calibrated thresholds
-- **24h horizon** acts as a timing/sizing filter (boost positions when aligned, reduce when opposed)
-- **No requirement for both horizons to agree** - this allows more flexibility while maintaining signal quality
+---
 
-### Architecture: Deterministic State-Space Networks
+### Why it works
+Instead of point estimates, the model predicts **Student-t parameters** \((μ, s, ν)\) per horizon. We convert them to a **confidence score**:
+`z = μ / s` (or use `σ` with `σ = s * sqrt(ν / (ν − 2))` for `ν > 2`)
 
-**Model Components:**
-- **Observation Encoder**: Transforms OHLCV + derived features into latent embeddings
-- **RSSM (Recurrent State Space Model)**: Learns temporal market dynamics in latent space  
-- **Distributional Head**: Predicts Student-t parameters (μ, σ, ν) for heteroscedastic returns
-- **Deterministic Mode**: Direct latent mapping for cleaner trading signals (vs stochastic training mode)
+We only act when confidence is high.  
+- **168h** drives entries (top/bottom deciles by |z|).  
+- **24h** refines timing/sizing (boost when aligned, haircut when opposed).  
+- Signals aggregate into a **USD-neutral long/short book** to avoid USD drift.
 
-The model processes 512-hour sequences across 7 FX majors (EURUSD, GBPUSD, AUDUSD, NZDUSD, USDCAD, USDCHF, USDJPY) using data from 2018-2025.
+---
 
-### Advanced Risk Management
+### Architecture (deterministic state-space)
+- **Encoder:** OHLCV + engineered features → latent \(e_t\)  
+- **Recurrent core:** unroll 512h windows, \(h_t = f_\theta(h_{t-1}, e_t)\)  
+- **Forecast head:** **decode from the final state** of each window to Student-t \((μ, s, ν)\) for **24h & 168h**  
+- **Modes:** deterministic for stable, low-variance signals (stochastic ablations used in research)
 
-**Portfolio Construction:**
-- **USD-neutral cross-sectional selection**: Top-K strongest longs, bottom-K strongest shorts by |z_168h|
-- **Volatility-aware position sizing**: Scale by predicted uncertainty and realized volatility
-- **σ-scaled exits**: Dynamic take-profit/stop-loss based on model confidence rather than fixed percentages
+*Universe:* EURUSD, GBPUSD, AUDUSD, NZDUSD, USDCAD, USDCHF, USDJPY (2018–2025).
 
-**Risk Controls:**
-- **Drawdown brake**: Halve exposure during >7% drawdowns until 50% recovery
-- **Portfolio volatility targeting**: Scale to maintain ~30% annualized vol
-- **Weekend risk management**: Flatten positions before gaps
-- **Per-pair and gross leverage caps**
+---
 
-### Signal Validation: Ventile Analysis
+### Risk & portfolio construction
+- **Selection:** rank by \(|z_{168h}|\); long strongest positives, short strongest negatives  
+- **Sizing:** volatility targeting + uncertainty scaling (bigger \(|z|\) → larger but capped)  
+- **Exits:** dynamic **σ-scaled** TP/SL (σ implied from \(s, ν\))  
+- **Controls:** per-pair & gross leverage caps; weekend flattening; drawdown brake (halve risk after −7% until 50% recovery)
 
-I validated predictive power by sorting forecasts into ventiles (20 equal buckets) based on z-scores:
-- **168h horizon**: Shows clear monotonic relationship between z-scores and realized returns
-- **24h horizon**: Noisier but provides valuable timing information for position sizing
+---
 
-### Performance Results
+### Validation
+- **Ventile analysis:** 168h shows a clear monotonic lift vs. realized returns; 24h is noisier but adds timing value  
+- **True OOS:** **Feb–Aug 2025** held out  
+- **Costs on:** pair-specific spreads; turnover managed (avg hold ~2–4 days)
 
-**In-Sample (2019-2024):**
-- Sharpe Ratio: **2.20**
-- CAGR: **7.16%**  
-- Max Drawdown: **-11.09%**
-- Win Rate: **51.3%**
+---
 
-**Out-of-Sample (2025 YTD):**
-- Sharpe Ratio: **1.75** 
-- CAGR: **15.87%**
-- Max Drawdown: **-3.85%**
-- Win Rate: **52.7%**
+![Ventiles (24h/168h)](/images/z-score-ventiles.png)
 
-*All results are net of realistic transaction costs (0.9-1.5 pip spreads)*
+---
 
-### Technical Implementation
+### Implementation notes
+- Temporal splits with strict anchoring (no look-ahead)  
+- Deterministic state-space in PyTorch; Student-t likelihood for fat tails  
+- Low-latency inference (<10 ms) suitable for intraday decisioning  
+- Reproducible configs/seeds; per-symbol modeling with shared embeddings
 
-**Data Pipeline:**
-- Hourly FX data with comprehensive feature engineering (15+ derived features per symbol)
-- Per-symbol standardization to prevent look-ahead bias
-- Train/validation/test temporal splits with proper out-of-sample evaluation
+---
 
-**Model Training:**
-- Deterministic state-space architecture for production consistency
-- Student-t likelihood for robust tail modeling
-- <10ms inference latency for real-time trading
+### Contributions
+1. **Uncertainty-aware trading:** σ-based sizing/exits from distributional forecasts  
+2. **Multi-horizon fusion:** 168h entries + 24h timing without hard agreement rules  
+3. **USD-neutral cross-section:** mitigates directional USD risk while harvesting spread  
+4. **Deterministic state-space → portfolio:** clean link from latent state to deployable signals
 
-**Cost Modeling:**
-- Realistic spread-based transaction costs
-- Half-spread charged at entry/exit
-- Turnover optimization (average hold ~2-4 days)
+---
 
-### Research Contributions
+### Files & docs
+- **Technical Summary (PDF):** method, IS/OOS, risk, caveats  
+- **Training & Backtest:** PyTorch world model + portfolio simulator with costs  
+- **Analysis:** ventiles, thresholds, sensitivity (spreads, turnover, caps)
 
-1. **σ-based Risk Management**: Using model uncertainty for dynamic position sizing and exits
-2. **Multi-horizon Signal Fusion**: Systematic combination of 24h/168h forecasts without requiring agreement
-3. **Cross-sectional USD Neutrality**: Market-neutral FX momentum strategy
-4. **Deterministic State-Space Trading**: First application to systematic FX alpha generation
-
-### Files & Documentation
-
-- **Research Paper**: 2-page professional summary with performance metrics and methodology
-- **Training Pipeline**: PyTorch implementation with deterministic/stochastic modes
-- **Backtesting Engine**: Full portfolio simulation with realistic costs and risk controls
-- **Signal Analysis**: Comprehensive ventile studies and threshold calibration
-
-This system demonstrates how modern deep learning can be combined with rigorous quantitative finance principles to generate sustainable alpha in competitive FX markets.
+> *Backtested research; not investment advice. Paper-trading validation in progress — see tear-sheet for updates.*
