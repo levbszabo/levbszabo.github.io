@@ -2,7 +2,7 @@
 
 **Tech Stack:** Python, PyTorch, Pandas, NumPy, Matplotlib  
 **Domain:** Quantitative Finance, Machine Learning, Algorithmic Trading  
-**Research Paper:** [📄 State-Space FX Alpha: Technical Summary (PDF)](/pdf/systematic_fx_trading.pdf)
+**Research Paper:** [📄 State-Space FX Alpha: Technical Summary (PDF)](/pdf/fx_trading_systematic.pdf)
 
 ### Executive Summary
 
